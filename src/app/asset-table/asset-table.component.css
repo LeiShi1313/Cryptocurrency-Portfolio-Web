@@ -1,0 +1,34 @@
+h2 {
+  text-align: right;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+}
+
+
+table.pure-table {
+  margin-left: auto;
+  margin-right: auto;
+  border-bottom: 1px solid #cbcbcb;
+}
+
+th {
+  text-align: center;
+}
+
+tbody {
+  border-bottom: 1px solid #cbcbcb;
+}
+
+td.td-last {
+  border-bottom: 1px solid #cbcbcb;
+}
+
+.pad {
+  width: 100%;
+  height: 0.9px;
+  background-color: #cbcbcb;
+  margin: 0;
+}

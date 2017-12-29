@@ -1,0 +1,26 @@
+<h2>Total: {{total | number: '2.1-2'}}</h2>
+<table class="pure-table">
+  <thead>
+    <tr>
+      <th>Exchange</th>
+      <th>Symbol</th>
+      <th>Amount</th>
+      <th>Status</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let exchange of exchanges">
+    <tr *ngFor="let asset of assets[exchange] | removeSmall; let first = first; let last = last">
+      <td *ngIf="first" [attr.rowspan]=assets[exchange].length>{{exchange}}</td>
+      <td [ngClass]="last ? 'td-last' : 'td-middle'">{{asset.symbol}}</td>
+      <td [ngClass]="last ? 'td-last' : 'td-middle'">{{asset.amount | number: '1.2-4'}}</td>
+      <td [ngClass]="last ? 'td-last' : 'td-middle'">{{asset.status}}</td>
+      <td [ngClass]="last ? 'td-last' : 'td-middle'">{{asset.price  | number: '1.2-4'}}</td>
+      <td *ngIf="first" [attr.rowspan]=assets[exchange].length>
+        {{sums[exchange] | number: '2.1-2'}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!--<div class="pad"></div>-->
