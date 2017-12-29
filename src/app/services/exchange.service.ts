@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 import { Asset, Price } from '../types';
-import { Config } from './config';
-import {ObjectUnsubscribedError} from "rxjs";
 
 @Injectable()
 export class ExchangeService {
-  private server_url = Config.server_url;
+  private server_url = environment.apiEndPoint;
   constructor(
     private http: HttpClient
   ) { }
@@ -29,6 +27,4 @@ export class ExchangeService {
     return this.http.get<Price>(url);
   }
 
-  ngOnInit() {
-  }
 }

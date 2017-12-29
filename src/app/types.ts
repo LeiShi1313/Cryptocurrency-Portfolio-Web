@@ -8,11 +8,11 @@ export class Asset {
 }
 
 export interface Assets {
-  [key: string]: Asset[]
+  [key: string]: Asset[];
 }
 
 export interface Sums {
-  [key: string]: number
+  [key: string]: number;
 }
 
 export class Price {

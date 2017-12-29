@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ExchangeService } from '../services/exchange.service';
-import { Observable } from "rxjs";
-
+import { Observable } from 'rxjs';
 
 import { Asset, Assets, Exchanges, Sums } from '../types';
 
@@ -13,14 +12,14 @@ import { Asset, Assets, Exchanges, Sums } from '../types';
 export class AssetTableComponent implements OnInit {
   assets: Assets = {};
   sums: Sums = {};
-  total: number = 0.0;
+  total = 0.0;
   exchanges = Exchanges;
 
   constructor(
     private exchangeService: ExchangeService) { }
 
   ngOnInit() {
-    for (let name of this.exchanges) {
+    for (const name of this.exchanges) {
       this.sums[name] = 0.0;
       this.getBalance(name);
     }
@@ -33,13 +32,13 @@ export class AssetTableComponent implements OnInit {
         console.log(assets);
         this.assets[name] = assets;
         Observable
-          .interval(5*60*1000)
+          .interval(5 * 60 * 1000)
           .startWith(0)
           .timeInterval()
           .flatMap(() => this.exchangeService.getBTCPrice(name))
           .subscribe(btc_price => {
             this.sums[name] = 0.0;
-            for (let asset of this.assets[name]) {
+            for (const asset of this.assets[name]) {
               if (asset.symbol === 'USDT') {
                 asset['price'] = asset.amount;
                 this.sums[name] = Number(this.sums[name]) + Number(asset['price']);
@@ -70,7 +69,7 @@ export class AssetTableComponent implements OnInit {
                           }
                       );
                     }
-                  )
+                  );
               }
             }
           });
