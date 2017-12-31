@@ -23,7 +23,7 @@ jobs:
                     - node_modules
             - run:
                 name: Building
-                command: npm run build
+                command: npm run build-prod
             - save_cache:
                 key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
                 paths:
@@ -38,6 +38,12 @@ jobs:
                 command: echo ${CIRCLE_BRANCH}
             - restore_cache:
                 key: v1-dist-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+            - run: 
+                name: Adding know hosts
+                command: mkdir -p ~/.ssh && ssh-keyscan -p 26421 leishi.zapto.org >> ~/.ssh/known_hosts
+            - run:
+                name: Transfer files
+                command: scp -P 26421 -i ~/.ssh/id_rsa -prq ~/coin-admin/dist/* circleci@leishi.zapto.org:~/coin-admin
 
 workflows:
     version: 2
