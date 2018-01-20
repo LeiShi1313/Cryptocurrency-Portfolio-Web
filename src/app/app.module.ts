@@ -2,8 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import {Component, NgModule, Pipe, PipeTransform} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -27,8 +26,7 @@ import { SumPipe } from './Pipes/sum.pipe';
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MatButtonModule,
-    MatCheckboxModule
+    NgbModule.forRoot()
   ],
   providers: [ ExchangeService ],
   bootstrap: [AppComponent]

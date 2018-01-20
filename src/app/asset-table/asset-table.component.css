@@ -1,4 +1,8 @@
-h2 {
+h2.asset-total {
+  text-align: right;
+}
+
+h3.asset-total-btc {
   text-align: right;
 }
 
