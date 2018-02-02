@@ -25,5 +25,6 @@ export const Exchanges: string[] = [
   'okex',
   'binance',
   'huobi',
-  'zb'
+  'zb',
+  'cryptopia'
 ];
